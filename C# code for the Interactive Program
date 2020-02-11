@@ -1,0 +1,65 @@
+// Sample Code
+namespace arduinoCsharp
+{
+    public partial class FormArduino : Form
+    {
+        public FormArduino()
+        {
+            InitializeComponent();
+            Init(); // connect to COM 3 serial port
+        }
+
+        private SerialPort myPort;
+ 
+        // initialise the com port for serial data
+        private void Init()
+        {
+            try
+            {
+                myPort = new SerialPort();
+                myPort.BaudRate = 9600;
+                myPort.PortName = "COM3";
+                myPort.Open();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Not connected");
+            }
+        }
+
+        bool led2Pin = false;
+        bool led3Pin = false;
+        bool led4Pin = false;
+        bool led5Pin = false;
+        bool led6Pin = false
+        
+        private void BtnLongPassage_Click(object sender, EventArgs e)
+        {
+            //int led3Pin = 3;  300, 301 long passage
+            if (led3Pin)
+            {
+                myPort.WriteLine("300");
+                led3Pin = false;
+            }
+            else
+            {
+                myPort.WriteLine("301");
+                led3Pin = true;
+            }
+        }
+        
+         private void BtnMaster_Click(object sender, EventArgs e)
+        {
+            myPort.WriteLine("200");
+            led2Pin = false;
+            myPort.WriteLine("300");
+            led3Pin = false;
+            myPort.WriteLine("400");
+            led4Pin = false;
+            myPort.WriteLine("500");
+            led5Pin = false;
+            
+           }
+       }
+    }
+        
