@@ -1,0 +1,28 @@
+#Sample Code
+int led2Pin = 2; // carport
+int led3Pin = 3; // long passage
+int led4Pin = 4; // short passage
+int led5Pin = 5; // bathroom two
+int led6Pin = 6; // bedroom two
+int led7Pin = 7; // bathroom one
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(led13Pin, OUTPUT);
+  pinMode(led12Pin, OUTPUT);
+  pinMode(led11Pin, OUTPUT); 
+  pinMode(led10Pin, OUTPUT);
+  pinMode(led9Pin, OUTPUT);
+}
+void loop() {
+  int val = Serial.parseInt();
+  switch (val) {
+    case 100 : digitalWrite(led10Pin, LOW); break;
+    case 101 : digitalWrite(led10Pin, HIGH); break;
+    case 200 : digitalWrite(led2Pin, LOW); break;
+    case 201 : digitalWrite(led2Pin, HIGH); break;
+    case 300 : digitalWrite(led3Pin, LOW); break;
+    case 301 : digitalWrite(led3Pin, HIGH); break;
+    case 400 : digitalWrite(led4Pin, LOW); break;  
+	}
+}
